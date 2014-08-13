@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+<div class="content">
+	{% block content %}
+	<h2 class="heading">Add Repair</h2>
+	<p>
+	{% for message in get_flashed_messages() %}
+		<div class=flash>
+			<span style="color: red;">[{{ message }}]</span>
+		</div>
+	{% endfor %}
+	</p>
+	<span class="spanner">
+		<table class="table">
+			<tr>
+				<td>
+					
+					<a href="/reports">
+						<h4>
+							<em>Reports</em>
+						</h4>
+					</a>
+					
+				</td>
+				<td>
+
+					
+						<a href="/">
+							<h4>
+								<em>Home</em>
+							</h4>
+						</a>
+					
+				</td>
+			</tr>
+		</table>
+	</span>
+	<form action="" method="post" name="repair">
+		{{form.hidden_tag()}}
+		<p>
+			<p><h4>Please enter Repair data below:</h4></p>
+			Date(yyyy-mm-dd):</br>
+			{{form.date()}}</br>
+			{% for error in form.errors.date %}
+        		<span style="color: red;">[{{error}}]</span>
+        	{% endfor %}<br>
+			PC Number:</br>
+			{{form.pc_num()}}</br>
+			{% for error in form.errors.pc_num %}
+        		<span style="color: red;">[{{error}}]</span>
+        	{% endfor %}<br>
+			Source Franchise:</br>
+			{{form.franchise()}}</br>
+			{% for error in form.errors.franchise %}
+        		<span style="color: red;">[{{error}}]</span>
+        	{% endfor %}<br>
+			Problem:</br>
+			{{form.problem()}}</br>
+			{% for error in form.errors.problem %}
+        		<span style="color: red;">[{{error}}]</span>
+        	{% endfor %}<br>
+			Solution:</br>
+			{{form.solution()}}</br>
+			{% for error in form.errors.solution %}
+        		<span style="color: red;">[{{error}}]</span>
+        	{% endfor %}<br>
+			Technician:</br>
+			{{form.tech()}}</br>
+			{% for error in form.errors.tech %}
+        		<span style="color: red;">[{{error}}]</span>
+        	{% endfor %}<br>
+			PC Application:</br>
+			{{form.pcapp()}}</br>
+			{% for error in form.errors.pcapp %}
+        		<span style="color: red;">[{{error}}]</span>
+        	{% endfor %}<br>
+			Motherboard Type:</br>
+			{{form.pcmb()}}</br>
+			{% for error in form.errors.pcmb %}
+        		<span style="color: red;">[{{error}}]</span>
+        	{% endfor %}<br>
+			
+		</p>
+		<p><input type="submit" value="Add Repair"></p>
+		</form>
+	{% endblock %}
+</div>
