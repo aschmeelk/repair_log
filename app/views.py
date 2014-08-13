@@ -1,8 +1,14 @@
 from flask import render_template, redirect, url_for, flash
 from app import app
 from app import db
+from app import admin
 from app.forms import AddRepair                       
 from app.models import Repairs
+from flask.ext.admin.contrib.sqla import ModelView
+
+# Admin views for modifying records
+# need to make this available via log in only.
+admin.add_view(ModelView(Repairs, db.session))
 
 
 #Home page route
