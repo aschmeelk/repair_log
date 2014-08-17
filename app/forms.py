@@ -108,3 +108,11 @@ class AddRepair(Form):
                                             ('P5GC-MX','P5GC-MX'),
                                             ('P5KPL-AM','P5KPL-AM'),
                                             ('P4P800', 'P4P800')], validators = [InputRequired()])
+
+
+class SelectReport(Form):
+    """doc string for SelectReport"""
+    report_type = SelectField('report_type', choices = [('all','all_repairs'),
+                                                        ('franchise','by_franchise'),
+                                                        ('machine','by_machine'),
+                                                        ('most','by_most_repairs')], validators=[InputRequired()])

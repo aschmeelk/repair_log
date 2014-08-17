@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 	{% block content %}
 <div class='jumbotron'>
-	<h2 class="heading">Last Five Repairs:</h2>
-		{% for message in get_flashed_messages() %}
-			<div class=flash>
-				{{ message }}
-			</div>
-		{% endfor %}
+	<h2 class="heading">Listing of All Repairs:</h2>
+		<p>
+			<h4 class="heading">(Latest First)</h4>
+		</p>
 		<span class="spanner">
-			<a href="/repairs">
+			<a href="/reports">
 				<h4>
-					<em>Enter New Repair</em>
+					<em>Back to reports</em>
 				</h4>
 			</a>
 		</span>
@@ -37,10 +35,12 @@
 					<td>{{repair.pc_app}}</td>
 					<td>{{repair.pc_mb}}</td>
 					
+					
 				</tr>
-				{% if loop.index >= 5 %}{% break %}{% endif %}
+				
 				{% endfor %}
+
 			</TABLE>
-</div>
+
 	{% endblock %}
 </div>

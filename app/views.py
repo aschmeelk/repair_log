@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, flash
 from app import app
 from app import db
 from app import admin
-from app.forms import AddRepair                       
+from app.forms import AddRepair, SelectReport                     
 from app.models import Repairs
 from flask.ext.admin.contrib.sqla import ModelView
 
@@ -39,3 +39,21 @@ def addrepair():
 		flash('Database updated!')
 		return render_template('repairs.html', form = form)
 	return render_template('repairs.html', form = form)
+
+# Route for Reports
+@app.route('/reports', methods=['GET','POST'])
+def reports():
+    form = SelectReport()
+    if form.validate_on_submit():       
+        if form.report_type.data == 'all':
+            return redirect(url_for('all'))
+
+    return render_template('reports.html', form=form)
+
+
+
+# Route for All Repairs
+@app.route('/all', methods=['GET','POST'])
+def all():
+    repairs = Repairs.query.order_by('date desc').all()
+    return render_template('all.html', repairs = repairs)
