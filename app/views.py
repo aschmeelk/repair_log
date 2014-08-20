@@ -47,6 +47,8 @@ def reports():
     if form.validate_on_submit():       
         if form.report_type.data == 'all':
             return redirect(url_for('all'))
+        elif form.report_type.data == 'franchise':
+            return redirect(url_for('franchise'))
 
     return render_template('reports.html', form=form)
 

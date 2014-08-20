@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 <div class="content">
 	{% block content %}
 	<h2 class="heading">Add Repair</h2>
@@ -39,7 +40,12 @@
 		<p>
 			<p><h4>Please enter Repair data below:</h4></p>
 			Date(yyyy-mm-dd):</br>
-			{{form.date()}}</br>
+			<div class="input-append date">
+				<input data-provide="datepicker" data-date-format="yyyy-mm-dd" id="date" type="text" value="{{ form.date.data }}" name="date" autoclose="True">
+				<span class="add-on"><i class="icon-th"></i></span>
+			</div>
+			
+			
 			{% for error in form.errors.date %}
         		<span style="color: red;">[{{error}}]</span>
         	{% endfor %}<br>
@@ -82,5 +88,6 @@
 		</p>
 		<p><input type="submit" value="Add Repair"></p>
 		</form>
+		
 	{% endblock %}
 </div>
